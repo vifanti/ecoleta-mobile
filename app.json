@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ecoletamobile",
-    "slug": "ecoletamobile",
+    "name": "E-coleta",
+    "slug": "ecoleta",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +23,7 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.vifanti.ecoletamobile",
+      "package": "com.fantinattoapp.ecoleta",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAhEHeOWuECJpxA6u8FfNZHopkJw23gNPM"
