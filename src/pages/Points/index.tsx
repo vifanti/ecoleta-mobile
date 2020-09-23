@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Constants from "expo-constants";
-import { Feather as Icon } from "@expo/vector-icons";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import React, { useState, useEffect } from 'react';
+import Constants from 'expo-constants';
+import { Feather as Icon } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -10,11 +10,11 @@ import {
   ScrollView,
   Image,
   Alert,
-} from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { SvgUri } from "react-native-svg";
-import * as Location from "expo-location";
-import api from "../../services/api";
+} from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { SvgUri } from 'react-native-svg';
+import * as Location from 'expo-location';
+import api from '../../services/api';
 
 interface Item {
   id: number;
@@ -55,10 +55,10 @@ const Points = () => {
     async function loadPosition() {
       const { status } = await Location.requestPermissionsAsync();
 
-      if (status !== "granted") {
+      if (status !== 'granted') {
         Alert.alert(
-          "Ooooops...",
-          "Precisamos de sua permissão para obter a localização"
+          'Ooooops...',
+          'Precisamos de sua permissão para obter a localização',
         );
         return;
       }
@@ -73,21 +73,21 @@ const Points = () => {
   }, []);
 
   useEffect(() => {
-    api.get("items").then((response) => {
+    api.get('items').then(response => {
       setItems(response.data);
     });
   }, []);
 
   useEffect(() => {
     api
-      .get("points", {
+      .get('points', {
         params: {
           city: routeParams.city,
           uf: routeParams.uf,
           items: selectedItems,
         },
       })
-      .then((response) => {
+      .then(response => {
         setPoints(response.data);
       });
   }, [selectedItems]);
@@ -97,13 +97,13 @@ const Points = () => {
   }
 
   function handleNavigateToDetail(id: number) {
-    navigation.navigate("Detail", { point_id: id });
+    navigation.navigate('Detail', { point_id: id });
   }
 
   function handleSelectItem(id: number): void {
-    const alreadySelected = selectedItems.findIndex((item) => item === id);
+    const alreadySelected = selectedItems.findIndex(item => item === id);
     if (alreadySelected >= 0) {
-      const filteredItems = selectedItems.filter((item) => item !== id);
+      const filteredItems = selectedItems.filter(item => item !== id);
 
       setSelectedItems(filteredItems);
     } else {
@@ -166,7 +166,7 @@ const Points = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 20 }}
         >
-          {items.map((item) => (
+          {items.map(item => (
             <TouchableOpacity
               key={String(item.id)}
               style={[
@@ -195,28 +195,28 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20,
-    fontFamily: "Ubuntu_700Bold",
+    fontFamily: 'Ubuntu_700Bold',
     marginTop: 24,
   },
 
   description: {
-    color: "#6C6C80",
+    color: '#6C6C80',
     fontSize: 16,
     marginTop: 4,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
   },
 
   mapContainer: {
     flex: 1,
-    width: "100%",
+    width: '100%',
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginTop: 16,
   },
 
   map: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
 
   mapMarker: {
@@ -227,37 +227,37 @@ const styles = StyleSheet.create({
   mapMarkerContainer: {
     width: 90,
     height: 70,
-    backgroundColor: "#34CB79",
-    flexDirection: "column",
+    backgroundColor: '#34CB79',
+    flexDirection: 'column',
     borderRadius: 8,
-    overflow: "hidden",
-    alignItems: "center",
+    overflow: 'hidden',
+    alignItems: 'center',
   },
 
   mapMarkerImage: {
     width: 90,
     height: 45,
-    resizeMode: "cover",
+    resizeMode: 'cover',
   },
 
   mapMarkerTitle: {
     flex: 1,
-    fontFamily: "Roboto_400Regular",
-    color: "#FFF",
+    fontFamily: 'Roboto_400Regular',
+    color: '#FFF',
     fontSize: 13,
     lineHeight: 23,
   },
 
   itemsContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 16,
     marginBottom: 32,
   },
 
   item: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderWidth: 2,
-    borderColor: "#eee",
+    borderColor: '#eee',
     height: 120,
     width: 120,
     borderRadius: 8,
@@ -265,20 +265,20 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 16,
     marginRight: 8,
-    alignItems: "center",
-    justifyContent: "space-between",
+    alignItems: 'center',
+    justifyContent: 'space-between',
 
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   selectedItem: {
-    borderColor: "#34CB79",
+    borderColor: '#34CB79',
     borderWidth: 2,
   },
 
   itemTitle: {
-    fontFamily: "Roboto_400Regular",
-    textAlign: "center",
+    fontFamily: 'Roboto_400Regular',
+    textAlign: 'center',
     fontSize: 13,
   },
 });
