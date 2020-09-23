@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F0F0F5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +23,12 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.vifanti.ecoletamobile"
+      "package": "com.vifanti.ecoletamobile",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAhEHeOWuECJpxA6u8FfNZHopkJw23gNPM"
+        }
+      }
     },
     "description": ""
   }
