@@ -135,7 +135,7 @@ const Points = () => {
                 longitudeDelta: 0.014,
               }}
             >
-              {/* {points.map((point) => (
+              {points.map((point) => (
                 <Marker
                   key={String(point.id)}
                   style={styles.mapMarker}
@@ -155,7 +155,7 @@ const Points = () => {
                     <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                   </View>
                 </Marker>
-              ))} */}
+              ))}
             </MapView>
           )}
         </View>
